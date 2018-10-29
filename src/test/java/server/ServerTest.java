@@ -39,7 +39,7 @@ class ServerTest {
     void receiveCommand() {
     }
 
-    Server server = new Server();
+    // Server server = new Server();
 
     @Test
     void rollDice() {
@@ -159,7 +159,30 @@ class ServerTest {
 
     @Test
     void moveToGraveyard() {
+        List<BasicCard> playerA = new ArrayList<>(Arrays.asList(
+                new BasicCreatureCard(1, "Marshmallow", "White soft treat", "does not exist yet", 3, 1, 2),
+                new BasicCreatureCard(2, "Plopp","Chocolate with gooey caramel center", "does not excist", 2, 2, 1),
+                new BasicCreatureCard(3, "Smash", "Crispy chocolate treat", "does not exist yet", 1, 5, 1),
+                new BasicCreatureCard(4, "Crazy face", "Sour chewy candy", "does not exist yet", 4, 1, 1)));
+        List<BasicCard> playerB = new ArrayList<>(Arrays.asList(
+                new BasicCreatureCard(1, "Marshmallow", "White soft treat", "does not exist yet", 3, 1, 2),
+                new BasicCreatureCard(2, "Plopp","Chocolate with gooey caramel center", "does not excist", 2, 2, 1),
+                new BasicCreatureCard(3, "Smash", "Crispy chocolate treat", "does not exist yet", 1, 5, 1),
+                new BasicCreatureCard(4, "Crazy face", "Sour chewy candy", "does not exist yet", 4, 1, 1)));
+        Game game = new Game();
+        for (int i = 0; i < 4; i++) {
+            game.getPlayerATableCards().add(playerA.get(i));
+            game.getPlayerBTableCards().add(playerB.get(i));
+
+            System.out.println(game.getPlayerATableCards().get(i).getName());
+        }
+        assertEquals(0, server.getPlayerAGraveyard().size());
+        assertEquals(0, server.getPlayerBGraveyard().size());
+        server.moveToGraveyard(2, 1);
+        assertEquals(1, server.getPlayerBGraveyard().size());
+
     }
+
 
     @Test
     void endTurn() {

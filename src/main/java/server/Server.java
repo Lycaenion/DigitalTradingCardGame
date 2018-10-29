@@ -21,7 +21,7 @@ public class Server {
     private List<BasicCard> playerBDeck;
     private List<BasicCard>[] playerDecks;
     private List<BasicCard> playerAGraveyard;
-    private List<BasicCard> playerBGraveyard;
+    private List<BasicCard> playerBGraveyard = new ArrayList<>();
     private List<BasicCard>[] playerGraveyards;
     
     public Server() {
@@ -162,8 +162,15 @@ public class Server {
         return creature.getHealth() > 0;
     }
 
-    public String moveToGraveyard(String s) {
-        return "";
+    public void moveToGraveyard(int index, int player) {
+        if (player == 0) {
+
+        } else {
+            //System.out.println(playerBTableCards.get(index));
+            BasicCard card = playerBTableCards.get(index);
+            playerBGraveyard.add(card);
+        }
+        //System.out.println(playerBTableCards.get(index));
     }
 
     public String endTurn(String s) {

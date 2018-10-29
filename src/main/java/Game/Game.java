@@ -4,13 +4,16 @@ import card.BasicCard;
 import player.Player;
 import repository.DummyDB;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Game {
     DummyDB dummy = new DummyDB();
-    private List<BasicCard> playerATableCards = dummy.database; // Remove A when multiplayer
-    private List<BasicCard> playerBTableCards = dummy.database; // Remove when multiplayer
-    
+    //private List<BasicCard> playerATableCards = dummy.database; // Remove A when multiplayer
+    //private List<BasicCard> playerBTableCards = dummy.database; // Remove when multiplayer
+
+    private List<BasicCard> playerATableCards = new ArrayList<>();
+    private List<BasicCard> playerBTableCards = new ArrayList<>();
     private Player playerA; // Remove A when multiplayer
     private Player playerB; // Remove when multiplayer
     
