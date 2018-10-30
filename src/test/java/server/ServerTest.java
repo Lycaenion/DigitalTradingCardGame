@@ -130,21 +130,35 @@ class ServerTest {
 
     @Test
     void attackEnemyCreature() {
-//        int roll1= Server.getInstance().rollDice(1,6);
-//        int roll2=Server.getInstance().rollDice(1,6);
+
+        List<BasicCreatureCard> playerAHand = new ArrayList<>();
+        playerAHand.add(new BasicCreatureCard(1,"asd","asd","asd",4,2,2));
+        playerAHand.add(new BasicCreatureCard(2,"asd","asd","asd",8,2,2));
+
+        List<BasicCreatureCard> playerBHand = new ArrayList<>();
+        playerBHand.add(new BasicCreatureCard(2,"asd","asd","asd",4,2,2));
+        playerBHand.add(new BasicCreatureCard(1,"asd","asd","asd",8,2,2));
+
+        int attackingCreatureIndex = 0;
+        int defendingCreatureIndex = 0;
+        BasicCreatureCard attackingCreature = playerAHand.get(attackingCreatureIndex);
+        BasicCreatureCard defendingCreature = playerBHand.get(defendingCreatureIndex);
+
         int playerARoll = 6;
         int playerBRoll = 4;
+        int dmg = playerARoll - playerBRoll;
         assertThat(playerARoll).isGreaterThan(playerBRoll);
+
+        defendingCreature.setHealth(defendingCreature.getHealth() - dmg);
+        assertEquals(2,defendingCreature.getHealth());
 
         int playerARoll2 = 2;
         int playerBRoll2 = 4;
-        assertThat(playerBRoll2).isGreaterThan(playerARoll2);
+        int dmg2 = playerBRoll2 - playerARoll2;
+        assertThat(playerARoll2).isLessThan(playerBRoll2);
 
-        int dmg = playerARoll2-playerBRoll2;
-        int playerACreatureHP= 10;
-        playerACreatureHP =-dmg;
-        assertThat(playerACreatureHP).isLessThan(10);
-
+        attackingCreature.setHealth(attackingCreature.getHealth() - dmg2);
+        assertEquals(2,attackingCreature.getHealth());
 
     }
 
