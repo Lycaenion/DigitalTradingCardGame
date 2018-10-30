@@ -8,6 +8,7 @@ import Game.Game;
 import java.lang.reflect.Array;
 import java.security.SecureRandom;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class Server {
@@ -20,7 +21,7 @@ public class Server {
     private List<BasicCard> playerADeck;
     private List<BasicCard> playerBDeck;
     private List<BasicCard>[] playerDecks;
-    private List<BasicCard> playerAGraveyard;
+    private List<BasicCard> playerAGraveyard = new ArrayList<>();
     private List<BasicCard> playerBGraveyard = new ArrayList<>();
     private List<BasicCard>[] playerGraveyards;
     
@@ -166,9 +167,10 @@ public class Server {
         if (player == 0) {
 
         } else {
-            //System.out.println(playerBTableCards.get(index));
             BasicCard card = playerBTableCards.get(index);
             playerBGraveyard.add(card);
+            playerBTableCards.remove(index);
+            game.getPlayerATableCards().remove(index);
         }
         //System.out.println(playerBTableCards.get(index));
     }

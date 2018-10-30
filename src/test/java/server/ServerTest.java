@@ -28,7 +28,7 @@ import static org.mockito.Mockito.when;
 @ExtendWith(MockitoExtension.class)
 class ServerTest {
 
-    @Mock
+    
     Server server = new Server();
 
     @BeforeEach
@@ -159,6 +159,7 @@ class ServerTest {
 
     @Test
     void moveToGraveyard() {
+        //Server server = new Server();
         List<BasicCard> playerA = new ArrayList<>(Arrays.asList(
                 new BasicCreatureCard(1, "Marshmallow", "White soft treat", "does not exist yet", 3, 1, 2),
                 new BasicCreatureCard(2, "Plopp","Chocolate with gooey caramel center", "does not excist", 2, 2, 1),
@@ -172,14 +173,20 @@ class ServerTest {
         Game game = new Game();
         for (int i = 0; i < 4; i++) {
             game.getPlayerATableCards().add(playerA.get(i));
+            server.getPlayerATableCards().add(playerA.get(i));
             game.getPlayerBTableCards().add(playerB.get(i));
+            server.getPlayerBTableCards().add(playerB.get(i));
 
-            System.out.println(game.getPlayerATableCards().get(i).getName());
+            //System.out.println(game.getPlayerATableCards().get(i).getName());
         }
         assertEquals(0, server.getPlayerAGraveyard().size());
         assertEquals(0, server.getPlayerBGraveyard().size());
         server.moveToGraveyard(2, 1);
+        //verify(server, times(1)).moveToGraveyard(2, 1);
         assertEquals(1, server.getPlayerBGraveyard().size());
+        assertEquals(3, server.getPlayerBTableCards().size());
+        assertEquals(3, game.getPlayerBTableCards().size());
+        assertEquals(1, game.getPlayerBGraveyard());
 
     }
 
