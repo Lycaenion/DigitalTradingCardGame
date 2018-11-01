@@ -4,6 +4,7 @@ import card.BasicCard;
 import card.BasicCreatureCard;
 import player.Player;
 import Game.Game;
+import repository.DummyDB;
 
 import java.lang.reflect.Array;
 import java.security.SecureRandom;
@@ -127,6 +128,7 @@ public class Server {
     public void setPlayerAGraveyard(List<BasicCard> playerAGraveyard) { this.playerAGraveyard = playerAGraveyard; }
 
     public List<BasicCard> getPlayerBGraveyard() { return playerBGraveyard; }
+
 
     //public void setPlayerBGraveyard(List<BasicCard> playerBGraveyard) { this.playerBGraveyard = playerBGraveyard; }
 
@@ -341,6 +343,10 @@ public class Server {
 
     public void quitGame() {
         System.exit(0);
+    }
+
+    public List<BasicCard> getShuffleDeckList(List<BasicCard> playerList) {
+        return playerList;
     }
 
 }

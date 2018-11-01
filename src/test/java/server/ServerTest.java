@@ -34,6 +34,7 @@ class ServerTest {
 
     @BeforeEach
     void setUp() {
+
         List<BasicCard> playerA = new ArrayList<>(Arrays.asList(
                 new BasicCreatureCard(1, "Marshmallow", "White soft treat", "does not exist yet", 1, 1, 2),
                 new BasicCreatureCard(2, "Plopp","Chocolate with gooey caramel center", "does not excist", 8, 2, 1),
@@ -254,6 +255,15 @@ class ServerTest {
         assertEquals("SUCCESS DEAD", Server.getInstance().attackEnemyCreature(0,0));
 
     }
+    @Test
+    void shuffleDeckList(){
+        Server.getInstance().getShuffleDeckList(Server.getInstance().getPlayerATableCards());
+        assertFalse(Server.getInstance().getPlayerATableCards()==Server.getInstance().getShuffleDeckList(Server.getInstance().getPlayerATableCards()));
+        System.out.println(Server.getInstance().getPlayerATableCards());
+        System.out.println(Server.getInstance().getShuffleDeckList(Server.getInstance().getPlayerATableCards()));
+
+    }
+
 
     @Test
     void healPlayer() {
