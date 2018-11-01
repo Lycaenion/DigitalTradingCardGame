@@ -8,9 +8,7 @@ import repository.DummyDB;
 
 import java.lang.reflect.Array;
 import java.security.SecureRandom;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 public class Server {
 
@@ -346,6 +344,7 @@ public class Server {
     }
 
     public List<BasicCard> getShuffleDeckList(List<BasicCard> playerList) {
+        Collections.shuffle(playerList);
         return playerList;
     }
 
