@@ -259,13 +259,14 @@ class ServerTest {
     void shuffleDeckList(){
         // Create more cards for further testing
         int testPassed = 0;
-        for (int i = 0; i < 1000; i++) {
+        for (int i = 0; i < 100000; i++) {
             String A = Server.getInstance().getPlayerATableCards().toString();
             String B = Server.getInstance().getShuffleDeckList(Server.getInstance().getPlayerATableCards()).toString();
-            testPassed += A != B ? 1 : 0;
+            testPassed += !A.equals(B) ? 1 : 0;
+
         }
     // Increase number passed when you got more cards
-        assertTrue(testPassed > 500);
+        assertTrue(testPassed > 90000,testPassed + "");
 
     }
 
